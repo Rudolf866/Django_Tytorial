@@ -1,0 +1,44 @@
+{% extends "apps/base.html" %}
+{% block title %}Index{% endblock title %}
+{% block header %}Главная{% endblock header %}
+
+{% block content %}
+    <p>{% now "Y" %}</p>
+    <p>{% now "F j Y" %}</p>
+    <p>{% now "N, j, Y" %}</p>
+    <p>{% now "N j, Y, P" %}</p>
+    <ul>
+{% for lists in list %}
+    <li>{{ lists }}</li>
+    {% empty %}
+    <li>Пусто выросла капуста</li>
+    {% endfor %}
+    </ul>
+    {% with name=list %}
+        <p>{{ name }}</p>
+    {% endwith %}
+    <form action="{% url 'create' %}" method="post">
+    {% csrf_token %}
+        <table>
+        {{ form }}
+        </table>
+        <input type="submit" value="Отправить">
+    </form>
+
+   {% if people.count > 0 %}
+    <h2>Список пользователей</h2>
+    <table>
+        <thead><th>Id</th><th>Имя</th><th>Возраст</th><th></th></thead>
+        {% for person in people %}
+        <tr>
+            <td>{{ person.id }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+            <td><a href="edit/{{person.id}}">Изменить</a> | <a href="delete/{{person.id}}">Удалить</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <a href="{% url 'blogs:post_list' %}"> В новости</a>
+
+{% endblock %}
