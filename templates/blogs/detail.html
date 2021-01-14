@@ -7,15 +7,19 @@
     <p>
  <a href="{% url "blogs:post_share" post.id %}">Share this post</a>
 </p>
+
      <p class="tags">
  Similar Post:<br>
  {% for similar in similar_posts %}
- <a href="{% url "blogs:post_list"  %}">
+ <a href="{% url "blogs:post_list"%}">
  {{ similar.title }}
  </a><br>
- {% if not forloop.last %}, {% endif %}
  {% endfor %}
 </p>
+
+
+
+
 
     {% with comments.count as total_comments %}
  <h2>{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
