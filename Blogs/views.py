@@ -86,3 +86,6 @@ def post_share(request, post_id):
     else:
         form = EmailPostForm()
     return TemplateResponse(request, 'blogs/share.html', {'post': post, 'form': form, 'sent': sent})
+
+
+
