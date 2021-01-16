@@ -35,6 +35,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+
 SITE_ID = 1
 
 # Application definition
@@ -43,6 +48,7 @@ INSTALLED_APPS = [
     'apps',
     'Blogs',
     'taggit',
+    'account',
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.admin',

@@ -5,9 +5,10 @@ body{
 h1{
     color:yellow;
 }
-img{
-    width:350px;
+.navbar-brand {
+  background: url("../img/django1.jpg");
 }
+
 .myfield{
             border:1px solid #ccc;
             border-radius:5px;
