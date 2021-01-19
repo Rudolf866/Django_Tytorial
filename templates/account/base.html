@@ -43,41 +43,22 @@
              <li class="nav-item active">
                  <a href="{% url "login" %}">Вход</a>
             </li>
-
      </ul>
        {% endif %}
 </nav>
 <div class="container">
     <div class="row">
-{#         <div id="header">#}
-{#         <span class="logo">Книжные закладки</span>#}
-{#             {% if request.user.is_authenticated %}#}
-{#         <ul class="menu">#}
-{#              <li {% if section == "dashboard" %} class="selected"{% endif %}>#}
-{#         <a href="{% url "dashboard" %}">Моя приборная панель</a>#}
-{#         </li>#}
-{#         <li {% if section == "images" %}class="selected"{% endif %}>#}
-{#         <a href="#">Изображения</a>#}
-{#         </li>#}
-{#         <li {% if section == "people" %}class="selected"{% endif %}>#}
-{#         <a href="#">Люди</a>#}
-{#         </li>#}
-{#         </ul>#}
-{#         {% endif %}#}
-{#         <span class="user">#}
-{#             {% if request.user.is_authenticated %}#}
-{#         Hello {{ request.user.first_name }},#}
-{#         <a href="{% url "logout" %}">Выход</a>#}
-{#         {% else %}#}
-{#         <a href="{% url "login" %}">Вход</a>#}
-{#         {% endif %}#}
-{#         </span>#}
-{#         </div>#}
-
-
-
-
           <div class="col-md-12">
+ {% if messages %}
+     <ul class="messages">
+     {% for message in messages %}
+         <li class="{{ message.tags }}">
+         {{ message|safe }}
+         <a href="#" class="close">x</a>
+         </li>
+     {% endfor %}
+     </ul>
+{% endif %}
               {% block content %}{% endblock %}
           </div>
     </div>

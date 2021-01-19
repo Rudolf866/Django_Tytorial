@@ -23,7 +23,6 @@ except IOError:
         'secret_key': 'a'
     }
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -39,16 +38,16 @@ LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
-
 SITE_ID = 1
 
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
     'apps',
     'Blogs',
     'taggit',
-    'account',
+    'social_django',
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.admin',
@@ -60,7 +59,6 @@ INSTALLED_APPS = [
 
 ]
 
-
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 
 SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
@@ -68,19 +66,16 @@ SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
 SENDGRID_API_KEY = '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'
 
 # Переключение режима песочницы (при работе в режиме отладки)
-SENDGRID_SANDBOX_MODE_IN_DEBUG=False
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 
 # echo to stdout или любой другой файлоподобный объект, который передается бэкенду через поток kwargs.
-SENDGRID_ECHO_TO_STDOUT=True
+SENDGRID_ECHO_TO_STDOUT = True
 
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = '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'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -94,12 +89,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'blog.urls'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# AUTH_USER_MODEL = 'auth.User'
 
 
 TAMPLATE_DIR = os.path.join(BASE_DIR, "templates")
@@ -137,6 +127,10 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+]
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -171,4 +165,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
+
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
