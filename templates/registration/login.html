@@ -17,4 +17,15 @@
  <p>Если у вас нет учетной записи <a href="{% url "register" %}">зарегистрируйтесь здесь</a></p>
  <p><a href="{% url "password_reset" %}">Забыли свой пароль?</a></p>
  </div>
+    <div class="social">
+ <ul>
+ <li class="facebook"><a href="{% url "social:begin" "facebook" %}">
+ Signin with Facebook</a></li>
+     <li class="google">
+ <a href="{% url "social:begin" "google-oauth2" %}">
+ Login with Google
+ </a>
+</li>
+ </ul>
+</div>
 {% endblock %}
