@@ -106,6 +106,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'social_django.context_processors.backends',  # Добавил эту строку
             ],
         },
     },
@@ -132,13 +133,16 @@ AUTHENTICATION_BACKENDS = [
     'account.authentication.EmailAuthBackend',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.vk.VKOAuth2',  # бекенд авторизации через ВКонтакте
 ]
 
-SOCIAL_AUTH_FACEBOOK_KEY = '245591560418327' # Facebook App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '8c35988469def96982ff6504e2c858b8' # Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_KEY = '245591560418327'  # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '8c35988469def96982ff6504e2c858b8'  # Facebook App Secret
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '781610009664-ff1jovcql0agbbh2c8vp8gph0m79frsi.apps.googleusercontent.com' # Google Consumer Key
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'BOTm_RCDWra17RAhL5jyJc5D' # Google Consumer Secret
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '781610009664-ff1jovcql0agbbh2c8vp8gph0m79frsi.apps.googleusercontent.com'  # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'BOTm_RCDWra17RAhL5jyJc5D'  # Google Consumer Secret
+SOCIAL_AUTH_VK_OAUTH2_KEY = '7734471'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'ZtRDj8rmYJLwvGcys8yY'
 LOGIN_REDIRECT_URL = '/account/'
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
