@@ -32,7 +32,7 @@ SECRET_KEY = str(SECRETS['secret_key'])
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1', '3f6ad53c.ngrok.io']
 
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'apps',
     'Blogs',
     'taggit',
+    'images',
     'social_django',
     'django.contrib.sites',
     'django.contrib.sitemaps',
@@ -89,7 +90,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'blog.urls'
 
-# AUTH_USER_MODEL = 'auth.User'
+#AUTH_USER_MODEL = 'account.User'
 
 
 TAMPLATE_DIR = os.path.join(BASE_DIR, "templates")

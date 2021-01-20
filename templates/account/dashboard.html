@@ -3,9 +3,16 @@
 {% block content %}
 <h1>Мониторинг</h1>
 
- <p>Добро пожаловать на вашу панель мониторинга.
 
-Ты можешь <a href="{% url "edit" %}">отредактируйте свой профиль</a> or
+    {% with total_images_created=request.user.images_created.count %}
+ <p>Добро пожаловать на вашу панель мониторинга.
+ {{total_images_created }} image{{ total_images_created|pluralize }}.</p>
+ {% endwith %}
+ <p>Перетащите следующую кнопку на панель инструментов закладок, чтобы добавить в закладки изображения
+с других веб-сайтов
+ <a href="javascript:{% include "images/bookmarklet_launcher.js" %}" class="button">
+ Bookmark it</a>
+ <p>
+ Ты можешь <a href="{% url "edit" %}">отредактируйте свой профиль</a> or
  <a href="{% url "password_change" %}">измените свой пароль</a>.
-</p>
 {% endblock %}

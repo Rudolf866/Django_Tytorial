@@ -28,6 +28,7 @@ urlpatterns = [
     path('', include('apps.urls')),
     path('blog/', include('Blogs.urls', namespace='blogs')),
     path('account/', include('account.urls')),
+    path('images/', include('images.urls', namespace='images')),
     path('admin/', admin.site.urls),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('feed/', LatestPostsFeed(), name='post_feed'),
