@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'Blogs',
     'taggit',
     'images',
+    'sorl.thumbnail',
     'social_django',
     'django.contrib.sites',
     'django.contrib.sitemaps',
@@ -90,7 +91,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'blog.urls'
 
-#AUTH_USER_MODEL = 'account.User'
+# AUTH_USER_MODEL = 'account.User'
 
 
 TAMPLATE_DIR = os.path.join(BASE_DIR, "templates")
@@ -178,6 +179,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+
+THUMBNAIL_DEBUG = True
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
